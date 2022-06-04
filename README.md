@@ -8,7 +8,7 @@ We at CREA have developed an online system that collects air pollution data from
 
 - the share of population covered by stations within radii of 5, 10, 50km and beyond for US, UK, Turkey, Thailand, Philippines, India. Population data available here: [data/gpw_v4_population_density_rev11_2020_15_min.tif](data/gpw_v4_population_density_rev11_2020_15_min.tif).
 
-You can use either R or Python for data analysis, and any library or platform to create charts, except Tableau and PowerBI. Code and results can be hosted on a Markdown document, Jupyter notebook, R markdown, simple code and images, or interactive web page.
+You can use either R or Python for data analysis, and any library or platform to create charts, except Tableau and PowerBI. Code and results can be hosted on a Markdown document, Jupyter notebook, R markdown, simple code and image files, or interactive web page.
 
 ## Part 1b (Optional) - Data scraping and visualisation
 
@@ -24,7 +24,7 @@ What would be your suggested and/or favourite stack to collect and serve air pol
 
 ## Comments
 
-We are interested in the way you solve the problems, howtructure your code and how you present results. There is no particular trap, but if you have any doubt or question, feel free to contact [me](hubert@energyandcleanair.org) directly.
+We are interested in the way you solve the problems, how you structure your code and how you present results. There is no particular trap but if you have any doubt or question, feel free to contact [me](hubert@energyandcleanair.org) directly.
 
 ## Submission
 
