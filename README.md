@@ -18,7 +18,7 @@ Here is a portal to access India's air quality: [CPCB](https://app.cpcbccr.com/c
 
 Collect PM2.5 daily data for all stations located in Kolkata and Lucknow using code only, and provide an **interactive** 365-day running average chart for these two cities from 2020 onward, using stations average.
 
-## Part 2 - Data structure
+## Part 2 - Architecture
 
 What would be your suggested and/or favourite stack to collect and serve air pollution data to users? (e.g. regular scraping, backend, data storage, frontend). Please provide justification or explanation if you have any. Keep it short!
 
