@@ -12,7 +12,7 @@ You can use either R or Python for data analysis, and any library or platform to
 
 ## Part 1b (Optional) - Data scraping and visualisation
 
-If you have no experience with geospatial data and find yourself struggling with Part 1a, you can work on Part 1b instead. If you have finished Part 1a, please skip directly to Part 2.
+If you have no experience with geospatial data and find yourself struggling with Part 1a, you can work on Part 1b instead. If you have finished Part 1a, you can skip directly to Part 2.
 
 Here is a portal to access India's air quality: [CPCB](https://app.cpcbccr.com/ccr/#/caaqm-dashboard-all/caaqm-landing/data)
 
