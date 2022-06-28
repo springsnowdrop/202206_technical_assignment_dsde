@@ -1,8 +1,12 @@
 The purpose: to develop a service stack for collecting, storing and exporting air pollution data to users.
 1. The web scraping technology: packages-selenium and beautifulsoup, coding platform-jupyter lab/google colab
-   Advantage: minimum reliance on computing environment setup and less hassle on instaling dependent libaries for coding test. Disadvantage: less secured for coding
+   Advantage: minimum reliance on computing environment setup and less hassle on instaling dependent libaries for coding test. 
+   Disadvantage: less secured for coding
 2. backend: Geoserver, postGIS and postgresql.
-   Advantage: open source with minumum maintenance; popular packages to gain technical community support; friendly with cloud environment. Disadvantage: maintenance requires expert skills.
+   Advantage: open source with minumum maintenance; popular packages to gain technical community support; friendly with cloud environment. 
+   Disadvantage: maintenance requires expert skills.
 3. frontend: QGIS/GRASS
-   Advantage: open source package with minimum cost; active community support; user friendly compared to ArcGIS;intuitive to cope with python and R. Disadvantage: technical skills demanding.   
-4. 
+   Advantage: open source package with minimum cost; active community support; user friendly compared to ArcGIS;intuitive to cope with python and R. 
+   Disadvantage: technical skills demanding.   
+4. data storage: for samll storage, postgreSQL and postGIS will be sufficient. If a large amount of satellite images and raster files will be collected, 
+   cloud solution such as AWS or google cloud is recommended.  
