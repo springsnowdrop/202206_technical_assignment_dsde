@@ -1,0 +1,4 @@
+__pycache__/
+.ipynb_checkpoints/
+# downloaded inputs (Natural Earth layers, raw OpenAQ crawl), re-created by the scripts
+part1a/data/cache/

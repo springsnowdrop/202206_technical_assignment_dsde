@@ -117,14 +117,14 @@ if __name__ == "__main__":
 
     driver.close()
 
-    # Place the files correctly
-    search_dir = "/home/rishab/Downloads/"
-    os.chdir(search_dir)
-    files = filter(os.path.isfile, os.listdir(search_dir))
-    files = [os.path.join(search_dir, f) for f in files]
+    # Move the downloaded files (the most recent ones in ~/Downloads) next to this script
+    search_dir = os.path.expanduser("~/Downloads")
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+    files = [os.path.join(search_dir, f) for f in os.listdir(search_dir)]
+    files = [f for f in files if os.path.isfile(f) and f.endswith(".xlsx")]
     files.sort(key=lambda x: os.path.getmtime(x))
 
-    for i in range(file_count):
-        os.replace(files[i], "/home/rishab/Downloads/Geo/data/"+files[i].split('/')[-1])
+    for f in files[-file_count:]:
+        os.replace(f, os.path.join(data_dir, os.path.basename(f)))
 
 
