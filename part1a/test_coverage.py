@@ -55,4 +55,5 @@ def test_low_cost_classification():
     assert cv.is_low_cost({"pm1", "pm25", "relativehumidity", "temperature", "um003"})
     assert cv.is_low_cost({"pm25", "humidity", "temperature"})
     assert not cv.is_low_cost({"pm25"})
+    assert cv.is_low_cost({"no2", "pm10", "pm25", "pressure", "relativehumidity", "temperature"})
     assert not cv.is_low_cost({"co", "no2", "o3", "pm25", "relativehumidity", "temperature"})

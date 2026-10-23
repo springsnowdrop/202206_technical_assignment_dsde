@@ -25,13 +25,14 @@ COUNTRY_COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#00830
 INK, INK_2, MUTED, GRID, AXIS, SURFACE = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7", "#fcfcfb"
 
 
-def make_figure(bands: pd.DataFrame, cumulative: pd.DataFrame, subtitle: str) -> go.Figure:
+def make_figure(bands: pd.DataFrame, cumulative: pd.DataFrame, subtitle: str, flag=()) -> go.Figure:
     band_labels = list(dict.fromkeys(bands["band"]))
     share = bands.pivot(index="country", columns="band", values="share")[band_labels]
     n_stations = bands.groupby("country")["n_stations"].first()
     # Best covered (within 10 km) at the top
     order = share[band_labels[:2]].sum(axis=1).sort_values().index.tolist()
-    ylabels = [f"{c}  <span style='color:{MUTED}'>({n_stations[c]:,} st.)</span>" for c in order]
+    ylabels = [f"{c}{'*' if c in flag else ''}  <span style='color:{MUTED}'>({n_stations[c]:,} st.)</span>"
+               for c in order]
 
     fig = make_subplots(
         rows=1, cols=2, column_widths=[0.52, 0.48], horizontal_spacing=0.09,
@@ -76,11 +77,12 @@ def make_figure(bands: pd.DataFrame, cumulative: pd.DataFrame, subtitle: str) ->
     fig.update_layout(
         title=dict(text="Share of population living near an air quality monitoring station"
                         f"<br><span style='font-size:13px;color:{INK_2}'>{subtitle}</span>",
-                   x=0.01, font=dict(size=19, color=INK)),
+                   x=0.01, y=1, yref="container", yanchor="top", pad=dict(t=22),
+                   font=dict(size=19, color=INK)),
         barmode="stack", bargap=0.35, hovermode="closest",
         font=dict(family="system-ui, -apple-system, Segoe UI, sans-serif", color=INK_2),
         plot_bgcolor=SURFACE, paper_bgcolor=SURFACE,
-        width=1200, height=560, margin=dict(l=20, r=20, t=125, b=60),
+        width=1200, height=600, margin=dict(l=20, r=20, t=165, b=60),
         legend=dict(orientation="h", x=0, y=1.0, yanchor="bottom", xanchor="left",
                     title_text="Distance: ", traceorder="normal"),
         legend2=dict(x=fig.layout.xaxis2.domain[0] + 0.01, y=1.0, xanchor="left", yanchor="top",
@@ -95,13 +97,16 @@ def make_figure(bands: pd.DataFrame, cumulative: pd.DataFrame, subtitle: str) ->
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--suffix", default="")
-    parser.add_argument("--subtitle", default="Stations: OpenAQ archive (reference monitors active in 2025)"
-                                               " · Population: GPWv4 2020")
+    parser.add_argument("--subtitle", default=(
+        "Stations: OpenAQ archive, monitors reporting ≥30 days in a year 2022-2025, low-cost sensors excluded"
+        " · Population: GPWv4 2020<br>* Philippines: PM2.5-only sites, almost all in Metro Manila and"
+        " probably indicative sensors - no regulatory network found in OpenAQ"))
+    parser.add_argument("--flag", nargs="*", default=["Philippines"], help="countries to mark with *")
     args = parser.parse_args()
 
     bands = pd.read_csv(RESULTS / f"coverage{args.suffix}.csv")
     cumulative = pd.read_csv(RESULTS / f"coverage_cumulative{args.suffix}.csv")
-    fig = make_figure(bands, cumulative, args.subtitle)
+    fig = make_figure(bands, cumulative, args.subtitle, args.flag)
     fig.write_html(RESULTS / f"coverage{args.suffix}.html", include_plotlyjs="cdn")
     fig.write_image(RESULTS / f"coverage{args.suffix}.png", scale=2)
     print(f"written {RESULTS / f'coverage{args.suffix}'}.html / .png")

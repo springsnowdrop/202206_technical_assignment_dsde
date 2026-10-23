@@ -18,7 +18,7 @@ Outputs (part1a/results/):
   coverage.csv            one row per country x distance band (population, share)
   coverage_cumulative.csv cumulative share of population vs distance to nearest station
 
-Usage:  python part1a/coverage.py --stations part1a/data/stations_openaq.csv --year 2025
+Usage:  python part1a/coverage.py [--stations part1a/data/stations_openaq.csv] [--years 2022 2025]
 """
 import argparse
 
@@ -37,11 +37,11 @@ MAX_KM = 2000  # distances beyond this go into the last bin
 CHUNK_CELLS = 2000
 
 # OpenAQ does not say which locations are low-cost sensors; their parameter list does.
-# Particle counts, PM1 and VOC come from optical/low-cost sensors only. Met parameters are
-# reported by sensor boards but also by some reference stations (e.g. CPCB), so they only
-# point to a low-cost sensor when no gaseous pollutant is measured.
-LOW_COST_ONLY = {"pm1", "um003", "um005", "um010", "um025", "um050", "um100", "voc"}
-MET = {"humidity", "relativehumidity", "temperature", "pressure"}
+# Particle counts, PM1, VOC and air pressure come from sensor boards only. Temperature and
+# humidity are reported by sensor boards but also by some reference stations (e.g. CPCB), so
+# they only point to a low-cost sensor when no gaseous pollutant is measured.
+LOW_COST_ONLY = {"pm1", "um003", "um005", "um010", "um025", "um050", "um100", "voc", "pressure"}
+MET = {"humidity", "relativehumidity", "temperature"}
 GASES = {"co", "no", "no2", "nox", "o3", "so2"}
 
 
@@ -49,14 +49,17 @@ def is_low_cost(parameters: set) -> bool:
     return bool(parameters & LOW_COST_ONLY) or bool(parameters & MET) and not parameters & GASES
 
 
-def select_stations(stations: pd.DataFrame, year: int, min_days: int, reference_only: bool) -> pd.DataFrame:
-    """Stations active in ``year``: at least ``min_days`` reporting days when the number of
-    days is known (OpenAQ), otherwise last update on or after the start of ``year`` (CREA)."""
+def select_stations(stations: pd.DataFrame, years: range, min_days: int, reference_only: bool) -> pd.DataFrame:
+    """Stations active in any of ``years``: at least ``min_days`` reporting days in one of them
+    when the number of days is known (OpenAQ), otherwise last update on or after the start of
+    the first one (CREA). A multi-year window keeps gaps in a source's feed (e.g. OpenAQ's
+    Turkey data stops in 2023) from emptying a country's network."""
     df = stations
-    if f"days_{year}" in df:
-        df = df[df[f"days_{year}"] >= min_days]
+    day_cols = [f"days_{y}" for y in years if f"days_{y}" in df]
+    if day_cols:
+        df = df[(df[day_cols] >= min_days).any(axis=1)]
     elif "last_updated" in df:
-        df = df[pd.to_datetime(df["last_updated"], errors="coerce") >= pd.Timestamp(year, 1, 1)]
+        df = df[pd.to_datetime(df["last_updated"], errors="coerce") >= pd.Timestamp(years[0], 1, 1)]
     if reference_only and "parameters" in df:
         params = df["parameters"].fillna("").str.split("|").apply(set)
         df = df[~params.apply(is_low_cost)]
@@ -149,15 +152,17 @@ def summarise(hists: dict, stations: pd.DataFrame):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--stations", default=str(DATA / "stations_openaq.csv"))
-    parser.add_argument("--year", type=int, default=2025, help="keep stations active this year (OpenAQ only)")
-    parser.add_argument("--min-days", type=int, default=30, help="minimum reporting days in --year")
+    parser.add_argument("--years", type=int, nargs=2, default=[2022, 2025], metavar=("FIRST", "LAST"),
+                        help="keep stations active in any year of this range")
+    parser.add_argument("--min-days", type=int, default=30, help="minimum reporting days in a year")
     parser.add_argument("--include-low-cost", action="store_true", help="also count low-cost sensors")
     parser.add_argument("--countries", nargs="+", default=list(COUNTRIES), choices=list(COUNTRIES))
     parser.add_argument("--suffix", default="", help="appended to output file names")
     args = parser.parse_args()
 
     stations = pd.read_csv(args.stations, dtype={"id": str})
-    stations = select_stations(stations, args.year, args.min_days, not args.include_low_cost)
+    years = range(args.years[0], args.years[1] + 1)
+    stations = select_stations(stations, years, args.min_days, not args.include_low_cost)
     stations.to_csv(RESULTS / f"stations_used{args.suffix}.csv", index=False)
 
     with rasterio.open(POPULATION_TIF) as src:

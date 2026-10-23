@@ -23,6 +23,7 @@ crea:cpcb,site_111,"Sector - 62, Noida - IITM",28.6245479,77.3577104,2026-09-30 
 crea:cpcb,site_113,"Shadipur, Delhi - CPCB",28.6514781,77.1473105,2026-09-30 20:00:00,IN
 crea:cpcb,site_114,"IHBAS, Dilshad Garden, Delhi - CPCB",28.6811736,77.3025234,2026-09-30 20:00:00,IN
 crea:cpcb,site_115,"NSIT Dwarka, Delhi - CPCB",28.60909,77.0325413,2026-09-30 20:00:00,IN
+crea:cpcb,site_116,"East Arjun Nagar, Delhi - CPCB",28.655935,77.294904,2023-11-28 13:00:00,IN
 crea:cpcb,site_117,"ITO, Delhi - CPCB",28.628624,77.24106,2026-09-30 20:00:00,IN
 crea:cpcb,site_118,"DTU, Delhi - CPCB",28.7500499,77.1112615,2026-09-30 20:00:00,IN
 crea:cpcb,site_119,"Sirifort, Delhi - CPCB",28.5504249,77.2159377,2026-09-30 20:00:00,IN
@@ -93,6 +94,7 @@ crea:cpcb,site_1561,"Mundka, Delhi - DPCC",28.684678,77.076574,2026-09-30 21:00:
 crea:cpcb,site_1562,"Sri Aurobindo Marg, Delhi - DPCC",28.531346,77.190156,2026-09-30 21:00:00,IN
 crea:cpcb,site_1563,"Pusa, Delhi - DPCC",28.636818,77.173597,2026-09-30 21:00:00,IN
 crea:cpcb,site_1565,"Lal Bahadur Shastri Nagar, Kalaburagi - KSPCB",17.321993,76.822628,2026-09-30 17:00:00,IN
+crea:cpcb,site_1569,"New Collectorate, Baghpat - UPPCB",28.974801,77.213357,2022-03-07 11:00:00,IN
 crea:cpcb,site_157,"IGSC Planetarium Complex, Patna - BSPCB",25.610369,85.132568,2026-09-30 17:00:00,IN
 crea:cpcb,site_158,"Muzaffarpur Collectorate, Muzaffarpur - BSPCB",26.1209,85.3647,2026-09-30 17:00:00,IN
 crea:cpcb,site_159,"Collectorate, Gaya - BSPCB",24.7955,84.9994,2026-09-30 17:00:00,IN
@@ -113,6 +115,7 @@ crea:cpcb,site_256,"Golden Temple, Amritsar - PPCB",31.62,74.876512,2026-09-30 1
 crea:cpcb,site_258,"Toll Gate, Tirumala - APPCB",13.67,79.35,2026-09-30 17:00:00,IN
 crea:cpcb,site_260,"GVM Corporation, Visakhapatnam - APPCB",17.72,83.3,2026-09-30 17:00:00,IN
 crea:cpcb,site_262,"Central University, Hyderabad - TSPCB",17.460103,78.334361,2026-09-30 17:00:00,IN
+crea:cpcb,site_263,"Sector- 16A, Faridabad - HSPCB",28.4088421,77.3099081,2024-09-16 16:00:00,IN
 crea:cpcb,site_271,"Chauhan Colony, Chandrapur - MPCB",19.9629,79.298714,2026-09-30 17:00:00,IN
 crea:cpcb,site_272,"Kendriya Vidyalaya, Lucknow - CPCB",26.906111,80.948222,2026-09-30 17:00:00,IN
 crea:cpcb,site_273,"Ardhali Bazar, Varanasi - UPPCB",25.3505986,82.9083074,2026-09-30 17:00:00,IN
@@ -218,6 +221,9 @@ crea:cpcb,site_5265,"Kalyana Nagara, Chikkamagaluru - KSPCB",13.328028,75.797056
 crea:cpcb,site_5266,"Vinoba Nagara, Shivamogga - KSPCB",13.94,75.555917,2026-09-23 08:00:00,IN
 crea:cpcb,site_5267,"Ibrahimpur, Vijayapura - KSPCB",16.802639,75.722694,2026-09-09 08:00:00,IN
 crea:cpcb,site_5269,"Deen Dayal Nagar, Sagar - MPPCB",23.8640158,78.80289321,2026-04-20 10:00:00,IN
+crea:cpcb,site_5270,"Vyttila, Kochi - Kerala PCB",9.969447,76.321186,2024-03-13 12:00:00,IN
+crea:cpcb,site_5271,"Palayam, Kozhikode - Kerala PCB",11.249077,75.784371,2023-03-15 14:00:00,IN
+crea:cpcb,site_5272,"Kacheripady, Ernakulam - Kerala PCB",9.985653,76.281342,2022-11-19 09:00:00,IN
 crea:cpcb,site_5273,"City Center, Gwalior - MPPCB",26.203442,78.193251,2026-09-30 17:00:00,IN
 crea:cpcb,site_5274,"GIDC, Nandesari - Nandesari Ind. Association",22.410802,73.097923,2026-09-30 17:00:00,IN
 crea:cpcb,site_5275,"Phool Bagh, Gwalior - Mondelez Ind. Food",26.210536,78.171,2025-02-20 10:00:00,IN
@@ -242,6 +248,7 @@ crea:cpcb,site_5365,"Kodungaiyur, Chennai - TNPCB",13.1278,80.2642,2026-09-30 17
 crea:cpcb,site_5367,"Meelavittan, Thoothukudi - TNPCB",8.816428,78.099039,2026-09-30 17:00:00,IN
 crea:cpcb,site_5370,"Buddha Colony, Muzaffarpur - BSPCB",26.11442,85.39813,2026-09-30 17:00:00,IN
 crea:cpcb,site_5375,"PWD Junction, Kohima - NPCB",25.6635413,94.0989878,2026-09-30 17:00:00,IN
+crea:cpcb,site_5377,"Kunjaban, Agartala - Tripura SPCB",23.8628276,91.2887362,2023-04-05 12:00:00,IN
 crea:cpcb,site_5390,"Corporation Ground, Thrissur - Kerala PCB",10.5324,76.2159,2026-09-30 17:00:00,IN
 crea:cpcb,site_5391,"Stuart Hill, Madikeri - KSPCB",12.415911,75.73505,2026-09-30 12:00:00,IN
 crea:cpcb,site_5392,"Bandra Kurla Complex, Mumbai - IITM",19.053536,72.84643,2026-09-30 17:00:00,IN
@@ -253,6 +260,7 @@ crea:cpcb,site_5397,"Khindipada-Bhandup West, Mumbai - IITM",19.1653323,72.92209
 crea:cpcb,site_5398,"Navy Nagar-Colaba, Mumbai - IITM",18.897756,72.81332,2026-09-30 17:00:00,IN
 crea:cpcb,site_5399,"Chakala-Andheri East, Mumbai - IITM",19.11074,72.86084,2026-09-30 18:00:00,IN
 crea:cpcb,site_5400,"Borivali East, Mumbai - IITM",19.23241,72.86895,2026-09-30 17:00:00,IN
+crea:cpcb,site_5401,"Sector-19A Nerul, Navi Mumbai - IITM",19.044,73.0325,2024-09-16 18:00:00,IN
 crea:cpcb,site_5402,"Malad West, Mumbai - IITM",19.19709,72.82204,2026-09-30 17:00:00,IN
 crea:cpcb,site_5403,"Siddharth Nagar-Worli, Mumbai - IITM",19.000083,72.813993,2026-09-30 17:00:00,IN
 crea:cpcb,site_5404,"Mhada Colony, Pune - IITM",18.57304,73.927715,2026-09-30 07:00:00,IN
@@ -261,10 +269,12 @@ crea:cpcb,site_5406,"Bhosari, Pune - IITM",18.640051,73.848956,2026-09-30 17:00:
 crea:cpcb,site_5407,"Hadapsar, Pune - IITM",18.501793,73.927532,2026-09-30 17:00:00,IN
 crea:cpcb,site_5408,"Transport Nagar-Nigdi, Pune - IITM",18.664282,73.763966,2026-09-30 17:00:00,IN
 crea:cpcb,site_5409,"Revenue Colony-Shivajinagar, Pune - IITM",18.530085,73.849598,2026-09-30 17:00:00,IN
+crea:cpcb,site_5410,"MIT-Kothrud, Pune - IITM",18.517754,73.8214883,2024-04-10 12:00:00,IN
 crea:cpcb,site_5412,"Kandivali East, Mumbai - MPCB",19.2058,72.8682,2026-04-18 11:00:00,IN
 crea:cpcb,site_5413,"Mulund West, Mumbai - MPCB",19.175,72.9419,2026-09-30 17:00:00,IN
 crea:cpcb,site_5414,"Haji Colony, Raichur - KSPCB",16.208139,77.348417,2026-04-14 22:00:00,IN
 crea:cpcb,site_5415,"Diwator Nagar, Koppal - KSPCB",15.34763,76.181767,2026-07-31 10:00:00,IN
+crea:cpcb,site_5416,"IITK, Kanpur - IITK",26.511739,80.235136,2023-11-30 02:00:00,IN
 crea:cpcb,site_5417,"Pan Bazaar, Guwahati - PCBA",26.1875,91.744194,2026-09-30 16:00:00,IN
 crea:cpcb,site_5418,"Naubad, Bidar - KSPCB",17.930306,77.482194,2026-04-19 08:00:00,IN
 crea:cpcb,site_5419,"Panchal Nagar, Gadag - KSPCB",15.411456,75.638133,2026-09-30 17:00:00,IN
@@ -299,6 +309,7 @@ crea:cpcb,site_5472,"Madan Mohan Malaviya University of Technology, Gorakhpur - 
 crea:cpcb,site_5474,"NSI Kalyanpur, Kanpur - UPPCB",26.509954,80.249612,2026-09-30 17:00:00,IN
 crea:cpcb,site_5475,"Maldahiya, Varanasi - UPPCB",25.32393,82.99687,2026-09-30 17:00:00,IN
 crea:cpcb,site_5476,"Kamalnath Nagar, Bettiah - BSPCB",26.80365,84.51954,2026-09-30 17:00:00,IN
+crea:cpcb,site_5477,"Town Hall - Lal Bagh, Darbhanga - BSPCB",26.15146,85.89342,2023-01-14 13:00:00,IN
 crea:cpcb,site_5478,"Gandak Colony, Motihari - BSPCB",26.63086,84.90051,2026-09-30 17:00:00,IN
 crea:cpcb,site_5479,"MIT-Daudpur Kothi, Muzaffarpur - BSPCB",26.1403345,85.3650192,2026-09-30 17:00:00,IN
 crea:cpcb,site_5480,"Nagla Bhau, Firozabad - UPPCB",27.168897,78.37696,2026-09-29 22:00:00,IN
@@ -512,6 +523,8 @@ crea:cpcb,site_5814,"Kherwadi_Bandra East, Mumbai - MPCB",19.0632143,72.8456324,
 crea:cpcb,site_5815,"Sanpada, Navi Mumbai - MPCB",19.0575752,73.0151367,2026-09-30 17:00:00,IN
 crea:cpcb,site_5816,"Suhagi, Jabalpur - JMC",23.218135,79.95777,2026-09-30 17:00:00,IN
 crea:cpcb,site_5817,"Gupteshwar, Jabalpur - JMC",23.142888,79.916147,2026-09-28 12:00:00,IN
+crea:cpcb,site_5827,"Kalakusuma, Dhanbad - DMC",23.811548,86.481238,2024-08-27 17:00:00,IN
+crea:cpcb,site_5832,"Mohalbani Ghat, Pathardih - DMC",23.66988,86.411725,2024-08-28 11:00:00,IN
 crea:cpcb,site_5848,"HB Colony, Vijayawada - APPCB",16.536107,80.594233,2026-09-30 17:00:00,IN
 crea:cpcb,site_5849,"Rajiv Gandhi Park, Vijayawada - APPCB",16.509717,80.612222,2026-09-30 17:00:00,IN
 crea:cpcb,site_5850,"Bhoiwada, Dungarpur - RSPCB",23.837789,73.714926,2026-09-30 17:00:00,IN

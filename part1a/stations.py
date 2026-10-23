@@ -142,7 +142,8 @@ def _openaq_location(location_id: str) -> dict | None:
         "name": rows[0]["location"],
         "lat": float(rows[0]["lat"]),
         "lon": float(rows[0]["lon"]),
-        "parameters": "|".join(sorted({r["parameter"] for r in rows})),
+        # older files call the parameter column "measurand"
+        "parameters": "|".join(sorted({r.get("parameter") or r["measurand"] for r in rows})),
         **{f"days_{y}": n for y, n in sorted(days.items())},
     }
 
@@ -156,19 +157,23 @@ def fetch_openaq(workers: int = 64) -> pd.DataFrame:
     ids = [p.rstrip("/").split("=")[-1] for p in prefixes]
     print(f"OpenAQ archive: {len(ids)} locations")
 
-    records, failed = [], []
-    with ThreadPoolExecutor(workers) as pool:
-        futures = {pool.submit(_openaq_location, i): i for i in ids}
-        for n, fut in enumerate(as_completed(futures), 1):
-            try:
-                if (rec := fut.result()) is not None:
-                    records.append(rec)
-            except Exception as e:  # keep going, report at the end
-                failed.append((futures[fut], repr(e)))
-            if n % 2000 == 0:
-                print(f"  {n}/{len(ids)} locations scanned, {len(records)} active since {OPENAQ_FIRST_YEAR}")
-    if failed:
+    records = []
+    for attempt in range(2):  # second pass retries the locations that failed (connection resets)
+        failed = []
+        with ThreadPoolExecutor(workers) as pool:
+            futures = {pool.submit(_openaq_location, i): i for i in ids}
+            for n, fut in enumerate(as_completed(futures), 1):
+                try:
+                    if (rec := fut.result()) is not None:
+                        records.append(rec)
+                except Exception as e:  # keep going, report at the end
+                    failed.append((futures[fut], repr(e)))
+                if n % 2000 == 0:
+                    print(f"  {n}/{len(ids)} locations scanned, {len(records)} active since {OPENAQ_FIRST_YEAR}")
+        if not failed:
+            break
         print(f"  {len(failed)} locations failed, e.g. {failed[:3]}")
+        ids = [i for i, _ in failed]
 
     df = pd.DataFrame(records)
     day_cols = sorted(c for c in df.columns if c.startswith("days_"))
